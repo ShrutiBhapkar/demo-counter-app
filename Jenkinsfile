@@ -10,17 +10,7 @@ pipeline{
                 
                 script{
                     
-                    git branch: 'main', url: 'https://github.com/ShrutiBhapkar/demo-counter-app.git'
-                }
-            }
-        }
-        stage('Maven build'){
-            
-            steps{
-                
-                script{
-                    
-                    sh 'mvn clean install'
+                    bat 'git clone https://github.com/vikash-kumar01/mrdevops_javaapplication.git'
                 }
             }
         }
@@ -30,7 +20,7 @@ pipeline{
                 
                 script{
                     
-                    sh 'mvn test'
+                    bat 'mvn test'
                 }
             }
         }
@@ -40,10 +30,20 @@ pipeline{
                 
                 script{
                     
-                    sh 'mvn verify -DskipUnitTests'
+                    bat 'mvn verify -DskipUnitTests'
                 }
             }
-        }  
+        }
+        stage('Maven build'){
+            
+            steps{
+                
+                script{
+                    
+                    bat 'mvn clean install'
+                }
+            }
+        }
         stage('Static code analysis'){
             
             steps{
@@ -52,7 +52,7 @@ pipeline{
                     
                     withSonarQubeEnv(credentialsId: 'sonar-api') {
                         
-                        sh 'mvn clean package sonar:sonar'
+                        bat 'mvn clean package sonar:sonar'
                     }
                    }
                     
