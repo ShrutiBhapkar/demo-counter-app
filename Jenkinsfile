@@ -10,7 +10,7 @@ pipeline{
                 
                 script{
                     
-                    bat 'git clone https://github.com/vikash-kumar01/mrdevops_javaapplication.git'
+                    bat 'git clone https://github.com/ShrutiBhapkar/demo-counter-app.git'
                 }
             }
         }
